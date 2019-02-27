@@ -1,17 +1,19 @@
 'use strict'
 
-import memory from './memory';
+const Memory = require('./memory.js');
+
+let memory = new Memory();
 
 class Array {
   constructor(){
-    this.length =0;
+    this.length = 0;
     this._capacity = 0
     this.ptr= memory.allocate(this.length);
   }
 
   push(value) {
     if(this.length >= this._capacity) {
-      this._resize((this.length +1)* Array.SIZE_RATIO)
+      this._resize((this.length + 1) * Array.SIZE_RATIO)
     }
     memory.set(this.ptr + this.length, value);
     this.length++;
@@ -68,3 +70,5 @@ class Array {
 }
 
 Array.SIZE_RATIO = 3;
+
+module.exports = Array;
