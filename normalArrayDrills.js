@@ -162,8 +162,34 @@ const twoDZero = (arr) => {
   //horizontal: find 0, for(let z = 0, z< array[y].length; z++) array[y][z] = 0; 
   //vertical: find 0, for(let z = 0, z < array[z].length;  z++) array[z][x] = 0;
   //return answer
-}
+};
 
-// console.log(inputArray);
-// console.log(twoDZero(inputArray));
 
+// Input: amazon, azonma
+
+// Output: False
+
+// Input: amazon, azonam
+//  amazon zonama
+//  amazon onamaz
+//  amazon namazo
+//  amazon amazon === return true
+//  run loop for length of start word
+// Output: true
+
+const stringRotation = (str1, str2) => {
+  let ourStr = str2;
+  for(let i = 0; i < str1.length; i++){
+    if(ourStr === str1){
+      return true;
+    }
+    else{
+      ourStr = ourStr.slice(1) + ourStr.charAt(0);
+    }
+  }
+  return false;
+};
+
+// O(n)
+
+console.log(stringRotation('amazon', 'namazo'));
