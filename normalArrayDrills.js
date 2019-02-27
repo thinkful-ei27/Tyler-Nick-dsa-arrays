@@ -44,22 +44,51 @@ const maxSum = (arr) => {
   return max;
 };
 
-const mergeArray = (arr1, arr2) => {
-  let resultsArr = [];
+// const mergeArray = (arr1, arr2) => {
+//   let resultsArr = [];
   
-  for(let i =0; i < arr1.length; i++){
-    for(let j =0; j < arr2.length; j++){
-      if(arr1[i] <= arr2[j]){
-        resultsArr.push(arr1[i]);
-      }
-      if(arr1[i] > arr2[j]){
-        resultsArr.push(arr2[j]);
-      }
-    }
-  }
-  return resultsArr;
-};
-let array1 = [1, 3, 6, 8, 11] ;
-let array2 = [2, 3, 5, 8, 9, 10];
+//   for(let i =0; i < arr1.length; i++){
+//     for(let j =0; j < arr2.length; j++){
+//       if(arr1[i] <= arr2[j]){
+//         resultsArr.push(arr1[i]);
+//       }
+//       if(arr1[i] > arr2[j]){
+//         resultsArr.push(arr2[j]);
+//       }
+//     }
+//   }
+//   return resultsArr;
+// };
+// let array1 = [1, 3, 6, 8, 11] ;
+// let array2 = [2, 3, 5, 8, 9, 10];
 
-console.log(mergeArray(array1, array2));
+// console.log(mergeArray(array1, array2));
+
+let input1 = [1, 3, 6, 8, 11];
+let input2 = [2, 3, 5, 8, 9, 10];
+
+const answer = [];
+const mergeArrays = (arr1, arr2) => {
+    //base cases
+    if(arr1.length === 0){
+        for(let i = 0; i < arr2.length; i++){
+            answer.push(arr2[i]);
+        }
+        return answer;
+    }
+    if(arr2.length === 0){
+        for(let i = 0; i < arr1.length; i++){
+            answer.push(arr1[i]);
+        }
+        return answer;
+    }
+    if(arr1[0] > arr2[0]){
+      answer.push(arr2[0]);
+      return mergeArrays(arr1, arr2.slice(1));
+    } else {
+      answer.push(arr1[0]);
+      return mergeArrays(arr1.slice(1), arr2);
+    }
+};
+
+console.log(mergeArrays(input1, input2));
