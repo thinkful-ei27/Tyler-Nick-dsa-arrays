@@ -67,28 +67,47 @@ const maxSum = (arr) => {
 let input1 = [1, 3, 6, 8, 11];
 let input2 = [2, 3, 5, 8, 9, 10];
 
+
 const mergeArrays = (arr1, arr2) => {
-    const answer = [];
-    if(arr1.length === 0){
-        for(let i = 0; i < arr2.length; i++){
-            answer.push(arr2[i]);
-        }
-        return answer;
+
+  const answer = [];
+
+  if(arr1.length === 0){
+    for(let i = 0; i < arr2.length; i++){
+      answer.push(arr2[i]);
     }
-    if(arr2.length === 0){
-        for(let i = 0; i < arr1.length; i++){
-            answer.push(arr1[i]);
-        }
-        return answer;
+    return answer;
+  }
+  if(arr2.length === 0){
+    for(let i = 0; i < arr1.length; i++){
+      answer.push(arr1[i]);
     }
-    if(arr1[0] > arr2[0]){
-      answer.push(arr2[0]);
-      return answer.concat(mergeArrays(arr1, arr2.slice(1)));
-    } else {
-      answer.push(arr1[0]);
-      return answer.concat(mergeArrays(arr1.slice(1), arr2));
-    }
+    return answer;
+  }
+  if(arr1[0] > arr2[0]){
+    answer.push(arr2[0]);
+    return mergeArrays(arr1, arr2.slice(1));
+  } else {
+    answer.push(arr1[0]);
+    return mergeArrays(arr1.slice(1), arr2);
+  }
 };
 
-console.log(mergeArrays(input1, input2));
+// console.log(mergeArrays(input1, input2));
+
+let sampleDelete = 'abcdfghjklmnpqrstvwxyz';
+let sentence = 'hello friend';
+const removeChar = (string, del) => {
+  let answerString = string;
+  for(let j = 0; j < del.length; j++){
+    for(let k =0; k < string.length; k++){
+      if(del[j] === string[k]){
+        answerString = answerString.replace(string[k], '');
+      }
+    }
+  }
+  return answerString;
+};
+
+// O(n^2);
 
