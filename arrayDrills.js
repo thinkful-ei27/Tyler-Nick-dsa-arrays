@@ -3,20 +3,20 @@
 const Array = require('./array.js');
 
 function main() {
-    Array.SIZE_RATIO = 3;
-    //create an instance of the array class
-    let arr = new Array();
-    //add an item to the array
-    arr.push(3); //cap = 3
-    arr.push(5); //cap = 3
-    arr.push(15); //length === cap, length+1 (4) * 3 cap = 12
-    arr.push(19); // cap 12 length = 4
-    arr.push(45); //cap 12 length = 5
-    arr.push(10); //cap 12 length = 6
-    arr.pop(); //length = 5 (pop has length--)
-    arr.pop(); //length = 4
-    arr.pop(); //length = 3
-    console.log(arr);;
+  Array.SIZE_RATIO = 3;
+  //create an instance of the array class
+  let arr = new Array();
+  //add an item to the array
+  arr.push(3); //cap = 3
+  arr.push(5); //cap = 3
+  arr.push(15); //length === cap, length+1 (4) * 3 cap = 12
+  arr.push(19); // cap 12 length = 4
+  arr.push(45); //cap 12 length = 5
+  arr.push(10); //cap 12 length = 6
+  arr.pop(); //length = 5 (pop has length--)
+  arr.pop(); //length = 4
+  arr.pop(); //length = 3
+  console.log(arr);
 }
 
 //arr.push(3)

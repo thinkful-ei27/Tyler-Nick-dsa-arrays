@@ -1,4 +1,4 @@
-'use strict'
+'use strict';
 
 const Memory = require('./memory.js');
 
@@ -7,13 +7,13 @@ let memory = new Memory();
 class Array {
   constructor(){
     this.length = 0;
-    this._capacity = 0
+    this._capacity = 0;
     this.ptr= memory.allocate(this.length);
   }
 
   push(value) {
     if(this.length >= this._capacity) {
-      this._resize((this.length + 1) * Array.SIZE_RATIO)
+      this._resize((this.length + 1) * Array.SIZE_RATIO);
     }
     memory.set(this.ptr + this.length, value);
     this.length++;
@@ -39,7 +39,7 @@ class Array {
 
   pop() {
     if (this.length == 0) {
-        throw new Error('Index error');
+      throw new Error('Index error');
     }
     const value = memory.get(this.ptr + this.length - 1);
     this.length--;
@@ -62,7 +62,7 @@ class Array {
 
   remove(index) {
     if (index < 0 || index >= this.length) {
-        throw new Error('Index error');
+      throw new Error('Index error');
     }
     memory.copy(this.ptr + index, this.ptr + index + 1, this.length - index - 1);
     this.length--;
