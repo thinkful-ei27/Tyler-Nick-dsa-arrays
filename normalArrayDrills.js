@@ -64,8 +64,8 @@ const maxSum = (arr) => {
 
 // console.log(mergeArray(array1, array2));
 
-let input1 = [1, 3, 6, 8, 11];
-let input2 = [2, 3, 5, 8, 9, 10];
+let input1 = [1, 3, 6, 8, 11, 11, 11];
+let input2 = [2, 3, 5, 8, 9, 10, 10, 12, 12, 12];
 
 
 const mergeArrays = (arr1, arr2) => {
@@ -86,10 +86,10 @@ const mergeArrays = (arr1, arr2) => {
   }
   if(arr1[0] > arr2[0]){
     answer.push(arr2[0]);
-    return mergeArrays(arr1, arr2.slice(1));
+    return answer.concat(mergeArrays(arr1, arr2.slice(1)));
   } else {
     answer.push(arr1[0]);
-    return mergeArrays(arr1.slice(1), arr2);
+    return answer.concat(mergeArrays(arr1.slice(1), arr2));
   }
 };
 
@@ -125,3 +125,45 @@ const products = (arr) => {
 };
 
 // O(n^2);
+
+//2D Array
+
+
+let inputArray = 
+[
+[1,0,1,1,0],
+[0,1,1,1,0],
+[1,1,1,1,1],
+[1,0,1,1,1],
+[1,1,1,1,1]
+];
+
+const twoDZero = (arr) => {
+  //separate answer array to not mess with source of truth
+  let outputArray = inputArray.map(line => line.slice(0));
+ 
+  //for loop checking each sub array (level 1) (index y)
+  for(let y = 0; y < arr.length; y++){
+  //next loop interacts with elements within array (index x)
+    for(let x = 0; x < arr[0].length; x++){
+      //if array[y][x] === 0 (SoT),
+      if(arr[y][x] === 0){
+        for(let z = 0; z < arr[0].length; z++){
+          outputArray[y][z] = 0;
+        }
+        for(let z = 0; z < arr.length; z++){
+          outputArray[z][x] = 0;
+        }
+      }
+    }  
+  }
+  return outputArray;
+  // return outputArray;
+  //horizontal: find 0, for(let z = 0, z< array[y].length; z++) array[y][z] = 0; 
+  //vertical: find 0, for(let z = 0, z < array[z].length;  z++) array[z][x] = 0;
+  //return answer
+}
+
+// console.log(inputArray);
+// console.log(twoDZero(inputArray));
+
