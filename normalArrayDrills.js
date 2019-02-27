@@ -111,3 +111,17 @@ const removeChar = (string, del) => {
 
 // O(n^2);
 
+const products = (arr) => {
+  const answer = [];
+  function getProduct(total, num) {
+    return total * num;
+  }
+  for(let i = 0; i < arr.length; i++){
+    let copyArr = arr.slice(0);
+    copyArr.splice(i, 1);
+    answer.push(copyArr.reduce(getProduct));
+  }
+  return answer;
+};
+
+// O(n^2);
